@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch</artifactId>
-  <version>2.3.1</version>
+  <version>2.3.2-SNAPSHOT</version>
   <name>Bootswatch</name>
   <description>WebJar for Bootswatch</description>
   <developers>
@@ -33,7 +33,7 @@
     <url>http://github.com/webjars/bootswatch</url>
     <connection>scm:git:https://github.com/webjars/bootswatch.git</connection>
     <developerConnection>scm:git:https://github.com/webjars/bootswatch.git</developerConnection>
-    <tag>bootswatch-2.3.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
