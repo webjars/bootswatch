@@ -1,15 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
+    <groupId>org.sonatype.oss</groupId>
     <version>7</version>
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch</artifactId>
-  <version>3.0.4+1-SNAPSHOT</version>
+  <version>3.0.3_2-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>Bootswatch</name>
   <description>WebJar for Bootswatch</description>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <developers>
     <developer>
       <id>jamesward</id>
@@ -21,30 +30,88 @@
       <name>Moandji Ezana</name>
       <email>mwanji@gmail.com</email>
     </developer>
+    <developer>
+      <id>aheritier</id>
+      <name>Arnaud Héritier</name>
+      <email>aheritier@apache.org</email>
+    </developer>
   </developers>
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+  <modules>
+    <module>amelia</module>
+    <module>cerulean</module>
+    <module>cosmo</module>
+    <module>cyborg</module>
+    <module>flatly</module>
+    <module>journal</module>
+    <module>readable</module>
+    <module>simplex</module>
+    <module>slate</module>
+    <module>spacelab</module>
+    <module>united</module>
+    <module>yeti</module>
+  </modules>
   <scm>
-    <url>http://github.com/webjars/bootswatch</url>
     <connection>scm:git:https://github.com/webjars/bootswatch.git</connection>
     <developerConnection>scm:git:https://github.com/webjars/bootswatch.git</developerConnection>
     <tag>HEAD</tag>
+    <url>http://github.com/webjars/bootswatch</url>
   </scm>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <upstream.version>3.0.3+1</upstream.version>
     <upstream.folderVersion>3.0.3-1</upstream.folderVersion>
-    <upstream.url>https://github.com/thomaspark/${project.artifactId}/archive</upstream.url>
+    <upstream.url>https://github.com/thomaspark/bootswatch/archive</upstream.url>
     <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
   </properties>
-
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.3.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+          <executions>
+            <execution>
+              <id>copy-theme-archive</id>
+              <configuration>
+                <target>
+                  <echo message="adding bootstrap distribution resources"></echo>
+                  <copy todir="${destDir}">
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/dist"></fileset>
+                  </copy>
+                  <copy todir="${destDir}/less">
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/less"></fileset>
+                  </copy>
+                  <copy todir="${destDir}/js">
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/js"></fileset>
+                  </copy>
+                  <echo message="adding theme resources"></echo>
+                  <copy overwrite="true" todir="${destDir}/css">
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/${theme}">
+                      <include name="*.css"></include>
+                    </fileset>
+                  </copy>
+                  <copy todir="${destDir}/less">
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/${theme}">
+                      <include name="*.less"></include>
+                    </fileset>
+                  </copy>
+                </target>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -52,6 +119,7 @@
         <version>1.0-beta-4</version>
         <executions>
           <execution>
+            <id>download-archive</id>
             <phase>process-resources</phase>
             <goals>
               <goal>download-single</goal>
@@ -63,36 +131,70 @@
             </configuration>
           </execution>
         </executions>
+        <!-- Don't inherit this configuration for children -->
+        <inherited>false</inherited>
       </plugin>
-
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
         <executions>
           <execution>
+            <id>unzip-archive</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
             </goals>
             <configuration>
               <target>
-                <echo message="unzip archive" />
-                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
-                <echo message="moving resources" />
-                <move todir="${destDir}">
-                  <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.folderVersion}">
-                    <depth min="1" />
-                  </fileset>
-                </move>
+                <echo message="unzip archive"></echo>
+                <unzip dest="${project.build.directory}" src="${project.build.directory}/${project.artifactId}.zip"></unzip>
+                <echo message="copy resources"></echo>
+                <copy todir="${destDir}">
+                  <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.folderVersion}"></fileset>
+                </copy>
               </target>
             </configuration>
           </execution>
         </executions>
+        <!-- Don't inherit this configuration for children -->
+        <inherited>false</inherited>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.3.2</version>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- Don't inherit this configuration for children -->
+        <inherited>false</inherited>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>${project.output.directory}/${project.build.finalName}.jar</file>
+                  <type>jar</type>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+        <!-- Don't inherit this configuration for children -->
+        <inherited>false</inherited>
       </plugin>
     </plugins>
   </build>
