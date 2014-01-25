@@ -4,7 +4,7 @@
   <parent>
     <artifactId>bootswatch-parent</artifactId>
     <groupId>org.webjars</groupId>
-    <version>3.0.3+1-1-SNAPSHOT</version>
+    <version>3.0.3+1-1</version>
   </parent>
   <artifactId>bootswatch</artifactId>
   <name>Bootswatch full distribution as webjar</name>
@@ -21,9 +21,9 @@
             </goals>
             <configuration>
               <target>
-                <echo message="adding all distribution resources"></echo>
+                <echo message="adding all distribution resources" />
                 <copy todir="${destDir}">
-                  <fileset dir="../target/bootswatch-${upstream.folderVersion}"></fileset>
+                  <fileset dir="../target/bootswatch-${upstream.folderVersion}" />
                 </copy>
               </target>
             </configuration>

@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch-parent</artifactId>
-  <version>3.0.3+1-1-SNAPSHOT</version>
+  <version>3.0.3+1-1</version>
   <packaging>pom</packaging>
   <name>Bootswatch Webjars Parent POM</name>
   <description>WebJar for Bootswatch</description>
@@ -55,7 +55,7 @@
     <url>http://github.com/webjars/bootswatch</url>
     <connection>scm:git:https://github.com/webjars/bootswatch.git</connection>
     <developerConnection>scm:git:https://github.com/webjars/bootswatch.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>bootswatch-parent-3.0.3+1-1</tag>
   </scm>
 
   <properties>
@@ -102,25 +102,25 @@
               <id>copy-theme-archive</id>
               <configuration>
                 <target>
-                  <echo message="adding bootstrap distribution resources"></echo>
+                  <echo message="adding bootstrap distribution resources" />
                   <copy todir="${destDir}">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/dist"></fileset>
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/dist" />
                   </copy>
                   <copy todir="${destDir}/less">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/less"></fileset>
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/less" />
                   </copy>
                   <copy todir="${destDir}/js">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/js"></fileset>
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/js" />
                   </copy>
-                  <echo message="adding theme resources"></echo>
+                  <echo message="adding theme resources" />
                   <copy overwrite="true" todir="${destDir}/css">
                     <fileset dir="../target/bootswatch-${upstream.folderVersion}/${theme}">
-                      <include name="*.css"></include>
+                      <include name="*.css" />
                     </fileset>
                   </copy>
                   <copy todir="${destDir}/less">
                     <fileset dir="../target/bootswatch-${upstream.folderVersion}/${theme}">
-                      <include name="*.less"></include>
+                      <include name="*.less" />
                     </fileset>
                   </copy>
                 </target>
@@ -168,11 +168,11 @@
             </goals>
             <configuration>
               <target>
-                <echo message="unzip archive"></echo>
-                <unzip dest="${project.build.directory}" src="${project.build.directory}/bootswatch-${upstream.folderVersion}.zip"></unzip>
-                <echo message="copy resources"></echo>
+                <echo message="unzip archive" />
+                <unzip dest="${project.build.directory}" src="${project.build.directory}/bootswatch-${upstream.folderVersion}.zip" />
+                <echo message="copy resources" />
                 <copy todir="${destDir}">
-                  <fileset dir="${project.build.directory}/bootswatch-${upstream.folderVersion}"></fileset>
+                  <fileset dir="${project.build.directory}/bootswatch-${upstream.folderVersion}" />
                 </copy>
               </target>
             </configuration>
