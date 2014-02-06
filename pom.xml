@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch-parent</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.1.0</version>
   <packaging>pom</packaging>
   <name>Bootswatch Webjars Parent POM</name>
   <description>WebJar for Bootswatch</description>
@@ -55,7 +55,7 @@
     <url>http://github.com/webjars/bootswatch</url>
     <connection>scm:git:https://github.com/webjars/bootswatch.git</connection>
     <developerConnection>scm:git:https://github.com/webjars/bootswatch.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>bootswatch-parent-3.1.0</tag>
   </scm>
 
   <properties>
