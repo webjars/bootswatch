@@ -6,10 +6,10 @@
     <groupId>org.webjars</groupId>
     <version>3.1.1-1-SNAPSHOT</version>
   </parent>
-  <artifactId>bootswatch-simplex</artifactId>
+  <artifactId>bootswatch-amelia</artifactId>
   <name>Bootswatch ${theme} webjar</name>
   <properties>
-    <theme>simplex</theme>
+    <theme>darkly</theme>
   </properties>
   <build>
     <plugins>
