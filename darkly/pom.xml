@@ -6,7 +6,7 @@
     <groupId>org.webjars</groupId>
     <version>3.1.1-1-SNAPSHOT</version>
   </parent>
-  <artifactId>bootswatch-amelia</artifactId>
+  <artifactId>bootswatch-darkly</artifactId>
   <name>Bootswatch ${theme} webjar</name>
   <properties>
     <theme>darkly</theme>
