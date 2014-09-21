@@ -6,27 +6,22 @@
     <groupId>org.webjars</groupId>
     <version>3.2.0+4-SNAPSHOT</version>
   </parent>
-  <artifactId>bootswatch</artifactId>
-  <name>Bootswatch full distribution as webjar</name>
+  <artifactId>bootswatch-paper</artifactId>
+  <name>Bootswatch ${theme} webjar</name>
+  <properties>
+    <theme>paper</theme>
+  </properties>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
-            <id>copy-full-archive</id>
+            <id>copy-theme-archive</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
             </goals>
-            <configuration>
-              <target>
-                <echo message="adding all distribution resources" />
-                <copy todir="${destDir}">
-                  <fileset dir="../target/bootswatch-${upstream.folderVersion}" />
-                </copy>
-              </target>
-            </configuration>
           </execution>
         </executions>
       </plugin>
