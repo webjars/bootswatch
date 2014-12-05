@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch-parent</artifactId>
-  <version>3.2.1+4-SNAPSHOT</version>
+  <version>3.3.1+2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Bootswatch Webjars Parent POM</name>
   <description>WebJar for Bootswatch</description>
@@ -36,16 +36,18 @@
     </license>
   </licenses>
   <modules>
-    <module>amelia</module>
     <module>cerulean</module>
     <module>cosmo</module>
+    <module>custom</module>
     <module>cyborg</module>
     <module>darkly</module>
+    <module>default</module>
     <module>flatly</module>
     <module>journal</module>
     <module>lumen</module>
     <module>paper</module>
     <module>readable</module>
+    <module>sandstone</module>
     <module>simplex</module>
     <module>slate</module>
     <module>spacelab</module>
@@ -64,8 +66,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <upstream.version>3.2.0+4</upstream.version>
-    <upstream.folderVersion>3.2.0-4</upstream.folderVersion>
+    <upstream.version>3.3.1+2</upstream.version>
+    <upstream.folderVersion>3.3.1-2</upstream.folderVersion>
     <upstream.url>https://github.com/thomaspark/bootswatch/archive</upstream.url>
     <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
   </properties>
