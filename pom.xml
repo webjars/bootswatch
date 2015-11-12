@@ -66,8 +66,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <upstream.version>3.3.5</upstream.version>
-    <upstream.folderVersion>3.3.5</upstream.folderVersion>
+    <upstream.version>3.3.5+4</upstream.version>
+    <upstream.folderVersion>3.3.5-4</upstream.folderVersion>
     <upstream.url>https://github.com/thomaspark/bootswatch/archive</upstream.url>
     <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
   </properties>
