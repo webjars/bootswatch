@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch-parent</artifactId>
-  <version>3.3.6+4-SNAPSHOT</version>
+  <version>3.3.7-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Bootswatch Webjars Parent POM</name>
   <description>WebJar for Bootswatch</description>
@@ -66,8 +66,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <upstream.version>3.3.5+4</upstream.version>
-    <upstream.folderVersion>3.3.5-4</upstream.folderVersion>
+    <upstream.version>3.3.7</upstream.version>
+    <upstream.folderVersion>3.3.7</upstream.folderVersion>
     <upstream.url>https://github.com/thomaspark/bootswatch/archive</upstream.url>
     <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
   </properties>
