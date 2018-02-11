@@ -4,7 +4,7 @@
   <parent>
     <artifactId>bootswatch-parent</artifactId>
     <groupId>org.webjars</groupId>
-    <version>3.3.8-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>bootswatch-yeti</artifactId>
   <name>Bootswatch ${theme} webjar</name>

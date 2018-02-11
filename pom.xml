@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.webjars</groupId>
   <artifactId>bootswatch-parent</artifactId>
-  <version>3.3.8-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Bootswatch Webjars Parent POM</name>
   <description>WebJar for Bootswatch</description>
@@ -38,18 +38,21 @@
   <modules>
     <module>cerulean</module>
     <module>cosmo</module>
-    <module>custom</module>
     <module>cyborg</module>
     <module>darkly</module>
-    <module>default</module>
     <module>flatly</module>
     <module>journal</module>
+    <module>litera</module>
     <module>lumen</module>
-    <module>paper</module>
-    <module>readable</module>
+    <module>lux</module>
+    <module>materia</module>
+    <module>minty</module>
+    <module>pulse</module>
     <module>sandstone</module>
     <module>simplex</module>
+    <module>sketchy</module>
     <module>slate</module>
+    <module>solar</module>
     <module>spacelab</module>
     <module>superhero</module>
     <module>united</module>
@@ -66,8 +69,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <upstream.version>3.3.7</upstream.version>
-    <upstream.folderVersion>3.3.7</upstream.folderVersion>
+    <upstream.version>4.0.0</upstream.version>
+    <upstream.folderVersion>4.0.0</upstream.folderVersion>
     <upstream.url>https://github.com/thomaspark/bootswatch/archive</upstream.url>
     <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
   </properties>
@@ -101,26 +104,9 @@
               <id>copy-theme-archive</id>
               <configuration>
                 <target>
-                  <echo message="adding bootstrap distribution resources" />
-                  <copy todir="${destDir}">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/dist" />
-                  </copy>
-                  <copy todir="${destDir}/less">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/less" />
-                  </copy>
-                  <copy todir="${destDir}/js">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/bower_components/bootstrap/js" />
-                  </copy>
                   <echo message="adding theme resources" />
-                  <copy overwrite="true" todir="${destDir}/css">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/${theme}">
-                      <include name="*.css" />
-                    </fileset>
-                  </copy>
-                  <copy overwrite="true" todir="${destDir}/less">
-                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/${theme}">
-                      <include name="*.less" />
-                    </fileset>
+                  <copy overwrite="true" todir="${destDir}">
+                    <fileset dir="../target/bootswatch-${upstream.folderVersion}/dist/${theme}"/>
                   </copy>
                 </target>
               </configuration>

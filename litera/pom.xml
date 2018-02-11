@@ -4,12 +4,12 @@
   <parent>
     <artifactId>bootswatch-parent</artifactId>
     <groupId>org.webjars</groupId>
-    <version>3.3.8-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>bootswatch-custom</artifactId>
+  <artifactId>bootswatch-litera</artifactId>
   <name>Bootswatch ${theme} webjar</name>
   <properties>
-    <theme>custom</theme>
+    <theme>litera</theme>
   </properties>
   <build>
     <plugins>

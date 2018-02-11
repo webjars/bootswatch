@@ -6,10 +6,10 @@
     <groupId>org.webjars</groupId>
     <version>4.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>bootswatch-journal</artifactId>
+  <artifactId>bootswatch-sketchy</artifactId>
   <name>Bootswatch ${theme} webjar</name>
   <properties>
-    <theme>journal</theme>
+    <theme>sketchy</theme>
   </properties>
   <build>
     <plugins>
